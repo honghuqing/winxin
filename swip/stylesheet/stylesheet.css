@@ -1,0 +1,170 @@
+@charset "utf-8";
+/* CSS Document */
+@media only screen and (min-width: 768px) and (max-width: 959px){img{ max-width:100%}}@media only screen and (max-width: 767px){img{ max-width:100%}}
+*{
+    margin: 0;
+	padding:0;
+}
+body{
+	height:100%;
+	width:100%;
+	background:#FFF;
+	color:#FFF;
+	font-size:12px;
+	font-family:KozGoPr6N-Regular;
+}
+p {
+	margin:0;
+	padding:0;
+}
+a img{
+	border:none;
+}
+img{
+	 vertical-align:middle;
+	 border:none;
+}
+header{
+	height:130px;
+	background:url(../image/header.png) repeat-x;
+}
+#container{
+	width:960px;
+	margin:0 auto;
+}
+#logo{
+	width:113px;
+	margin:0 auto;
+	padding-top:33px;
+}
+#top{
+	height:70px;
+	border-bottom:1px solid #892432;
+}
+#top .main{
+	float:left;
+	margin-top:25px;
+}
+#top .main a,#top .share a{
+	text-decoration:none;
+	font-size:18px;
+	color:#892432;
+}
+#top .share{
+	float:right;
+	margin-top:30px;
+	
+}
+#top .share a{
+	display:inline-block;
+	padding-left:7px;
+}
+.content{
+    padding:2px 58px;
+	display:inline-block;
+	
+}
+.content .image{
+	margin:0 2px 3px 2px;
+	float:left;
+	font-family: Impact;
+	position:relative;
+}
+.issue{
+	background: url("../image/rect-left.png") no-repeat scroll 0 0 transparent;
+    font-size: 66px;
+    height: 69px;
+    line-height: 66px;
+    position: absolute;
+    text-indent: 20px;
+    width: 340px;
+    z-index: 10;
+}
+.issue.three{
+	background:url(../image/rect-right.png) no-repeat;
+	left:31px;
+	top:10px;
+	width:320px;
+	padding-right:20px;
+	text-align:right;
+}
+.issue.one{
+	left:0;
+	top:10px;
+}
+.issue.two{
+	left:30px;
+	top:340px;
+}
+.issue.perfect{
+	left:0;
+	top:478px;
+	font-size:40px;
+	width:378px;
+}
+.issue.desc{
+	background: url("../image/rect.png") no-repeat scroll 0 0 transparent;
+    font-size: 23px;
+    height: 296px;
+    line-height: 45px;
+    padding: 50px 15px;
+    right: 0;
+    top: 110px;
+    width: 293px;
+}
+.center{
+	display:inline-block;
+	margin:30px 0;
+}
+.center .center-left{
+	float:left;
+	position:relative;
+}
+.center .center-right{
+	float:left;
+	position:relative;
+}
+#page{
+	width:100%;
+	height:70px;
+	color:#892432;
+	font-size:18px;
+	line-height:70px;
+	border-top: 1px solid #892432;
+}
+#page .pre{
+	float:left;
+	width:10%;
+}
+#page .pag{
+	float:left;
+	width:80%;
+	font-size:24px;
+	text-align:center;
+}
+#page .pag .line{
+	margin:0 20px;
+}
+#page .next{
+	float:right;
+	width:10%;
+	text-align:right;
+}
+#page .pre a, #page .next a{
+	color:#6F6F6F;
+	text-decoration:none;
+	margin:0 10px;
+}
+#footer{
+	border-top: 1px solid #892432;
+    color: #787878;
+    font-size: 16px;
+    height: 45px;
+    padding-top: 55px;
+    text-align: center;
+	clear:both;
+}
+@font-face {
+    font-family:KozGoPr6N-Regular;
+	src: url('KozGoPr6N-Regular.otf');
+}
