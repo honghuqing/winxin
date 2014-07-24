@@ -1,5 +1,5 @@
 <?php
-
+//header("Content-type: text/html; charset=utf-8"); 
 //装载模板文件
 include_once("wx_tpl.php");
 
@@ -27,7 +27,7 @@ if (!empty($postStr)){
 		{
 			//回复欢迎文字消息
 			$msgType = "text";
-			$contentStr = "感谢您关注爱承知！[玫瑰]";
+			$contentStr = "感谢您关注上医养生！[玫瑰]";
 			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
 			echo $resultStr;
 			exit;
@@ -75,9 +75,11 @@ if (!empty($postStr)){
 					$json[$k]['Title']=$row['title'];
 					$json[$k]['Url']=$row['url'];
 					if($k == 0){
-						$json[$k]['PicUrl']=$row['attachments'][0]['images']["medium"]['url'];
+						$imgurl=$row['attachments'][0]['images']["medium"]['url'];
+						$json[$k]['PicUrl']=dirname($imgurl).'/'.urlencode(substr(strrchr($imgurl,'/'),1));
 					}else{
-						$json[$k]['PicUrl']=$row['attachments'][0]['images']["thumbnail"]['url'];
+						$imgurl=$row['attachments'][0]['images']["thumbnail"]['url'];
+						$json[$k]['PicUrl']=dirname($imgurl).'/'.urlencode(substr(strrchr($imgurl,'/'),1));
 					}
 				}
 				//如果有数据，将数据存入redis
@@ -114,6 +116,9 @@ if (!empty($postStr)){
 					  $resultStr.="</Articles>\n
 					  <FuncFlag>0</FuncFlag>\n
 					  </xml>";
+					  
+					  echo $resultStr;
+				exit;
 
 				}else{
 					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType,'没有相关内容');
