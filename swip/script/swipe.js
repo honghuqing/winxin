@@ -310,10 +310,27 @@ function Swipe(container, options) {
 
       // if not scrolling vertically
       if (!isScrolling) {
-
         if (isValidSlide && !isPastBounds) {
 
           if (direction) {
+			  var yimg=document.getElementById('img'+index);
+			
+			if('img'+index == 'img2'){
+				$(yimg).animate({left:'15px',opacity:'0'},"slow");
+			  }else if('img'+index == 'img3'){
+				$(yimg).animate({right:'15px',opacity:'0'},"slow");
+			  }else{
+				$(yimg).animate({top:'60px',opacity:'0'},"slow");
+			  }
+			
+			  var nimg=document.getElementById('img'+(index+1));
+			  if('img'+(index+1) == 'img2'){
+				$(nimg).animate({left:'25px',opacity:'1'},"slow");
+			  }else if('img'+(index+1) == 'img3'){
+				$(nimg).animate({right:'25px',opacity:'1'},"slow");
+			  }else{
+				$(nimg).animate({top:'80px',opacity:'1'},"slow");
+			  }
 
             move(index-1, -width, 0);
             move(index, slidePos[index]-width, speed);
@@ -321,6 +338,24 @@ function Swipe(container, options) {
             index += 1;
 
           } else {
+
+			  var yimg=document.getElementById('img'+index);
+			
+			if('img'+index == 'img2'){
+				$(yimg).animate({left:'15px',opacity:'0'},"slow");
+			  }else if('img'+index == 'img3'){
+				$(yimg).animate({right:'15px',opacity:'0'},"slow");
+			  }else{
+				$(yimg).animate({top:'60px',opacity:'0'},"slow");
+			  }
+			  var nimg=document.getElementById('img'+(index-1));
+			  if('img'+(index-1) == 'img2'){
+				$(nimg).animate({left:'25px',opacity:'1'},"slow");
+			  }else if('img'+(index-1) == 'img3'){
+				$(nimg).animate({right:'25px',opacity:'1'},"slow");
+			  }else{
+				$(nimg).animate({top:'80px',opacity:'1'},"slow");
+			  }
 
             move(index+1, width, 0);
             move(index, slidePos[index]+width, speed);

@@ -49,24 +49,23 @@
 </div>
 <div id="slider" class="swipe container">
 <div  class="swipe-wrap col-lg-12">
-	<div class="wrap one-box">
-		<h1>上医养生</h1>
-		<p>指明健康的方向 给予健康的方法</p>
-		<p>当前，我国国民整体上正在遭遇日益严峻的健康危机。反思以西医为主导的现行健康医疗体系，我们会发现，以中国医道的文化及临床精髓为核心，打造最适于中国人自己的健康体系，已是当务之急</p>
-		<p><img src="./image/one.jpg" class="img-responsive" /></p>
-		<p><a href="javascript:void()"><button class="btn btn-default">关注</button></a></p>
-	</div>
-	<div class="wrap"><img class="img-responsive" src="image/thumb_desktop/2.png"/></div>
-	<div class="wrap"><img class="img-responsive" src="image/thumb_desktop/3.png"/></div>
-	<div class="wrap"><img class="img-responsive" src="image/thumb_desktop/4.png"/></div>
-	<div class="wrap"><img class="img-responsive" src="image/thumb_desktop/5.png"/></div>
-	<div class="wrap"><img class="img-responsive" src="image/thumb_desktop/6.png"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/1.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img0"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/2.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img1"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/3.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img2"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/4.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;right:15px;bottom:15px;z-index:31;opacity:0" id="img3"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/5.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img4"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/6.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img5"/></div>
+	<div class="wrap" style="background:url(image/thumb_desktop/7.jpg) no-repeat;height:520px"><img class="img-responsive" src="01.jpg" width="155" style="position:absolute;left:15px;top:60px;z-index:31;opacity:0" id="img6"/></div>
   
 </div>
 </div>
+<script type="text/javascript">
+<!--
+		$("#img0").animate({top:'80px',opacity:'1'},"slow");
+//-->
+</script>
 <script src="script/swipe.js"></script>
 <script>
-
 var slider =
   Swipe(document.getElementById('slider'), {
     auto: 0, //0为不自动播放
