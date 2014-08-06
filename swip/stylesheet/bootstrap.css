@@ -6586,6 +6586,9 @@ button.close {
 
 .affix {
   position: fixed;
+  right:5px;
+  top:5px;
+  z-index: 40;
 }
 
 @-ms-viewport {

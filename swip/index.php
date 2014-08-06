@@ -1,15 +1,16 @@
 <?php
 
-  require('../predis/autoload.php');
+  require('../../predis/autoload.php');
   $redis=new Predis\Client(); //实例化一个redis对象
 
-  $slide_name=$redis->keys('slide?');
-  sort($slide_name);
+  $slide_name=$redis->keys('story:*');
   $slides=array();
   foreach($slide_name as $k=>$v){
-    $slides[]=(array)json_decode($redis->get($v));
+    $story=$redis->hgetall($v);
+    $slides[$story['order']]=$story;
   }
 
+  ksort($slides);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,7 +30,7 @@
   overflow: hidden;
   visibility: hidden;
   position: relative;
-}
+} 
 .swipe-wrap {
   overflow: hidden;
   position: relative;
@@ -40,9 +41,9 @@
   position: relative;
 }
 .player{
-	margin-top:20px;
+	margin-top:5px;
 	position:absolute;
-	right:10px;
+	right:5px;
 	z-index:20;
 }
 /* END required styles */
@@ -55,10 +56,10 @@
 
 </head>
 
-<body>
-<div class="player">
-	<audio src="./1.mp3" id="music" poster="poster.jpg" autoplay ></audio>
-	<a href="javascript:playPause();" ><img src="music.jpg" width="30" height="27" id="music_btn" border="0"></a>
+<body style="position:relative" class="container">
+<div class="affix">
+  <audio src="./1.mp3" id="music" poster="poster.jpg" autoplay="autoplay" loop="loop"></audio>
+  <a href="javascript:playPause();" ><img src="music.gif" width="30" id="music_btn" border="0"></a>
 </div>
 <div id="slider" class="swipe container">
 <div  class="swipe-wrap col-lg-12">
@@ -69,15 +70,18 @@
       $keys=array_keys($v);
       $values=array_values($v);
   ?>
-	<div class="wrap" style="background:url(<?php echo $v['bg_img'];?>) no-repeat;height:520px">
-    <img class="img-responsive" src="<?php echo $v['l_img'];?>" width="155" style="position:absolute;<?php echo $keys[3].':'.$values[3].'px;'; echo $keys[4].':'.$values[4].'px;';?>z-index:31;opacity:0" id="img<?php echo $index;$index++;?>" thisalt="<?php echo $v['type'];?>"/>
-  </div>
-  <?php }?>
+	<div class="wrap">
+    <img class="img-responsive" src="<?php echo $v['bg_img'];?>" /> 
+    <img class="img-responsive" src="<?php echo $v['l_img'];?>" style="position:absolute;<?php echo $keys[3].':'.$values[3].'px;'; echo $keys[4].':'.$values[4].'px;';?>z-index:31;opacity:0" id="img<?php echo $index;$index++;?>" title="<?php echo $v['type'];?>"/> </div> <?php }?>
 </div>
 </div>
 <script type="text/javascript">
 <!--
-		$("#img0").animate({top:'80px',opacity:'1'},"slow");
+		// $("#img0").animate({top:'80px',opacity:'1'},"slow");
+     //上一个slide
+  var img0=document.getElementById('img0');
+  $(img0).animate({opacity:'1'},"slow");
+
 //-->
 </script>
 <script src="script/swipe.js"></script>
@@ -113,12 +117,12 @@ $(function(){
  
        if (myVideo.paused){
            myVideo.play();
-                   music_btn.src='music.jpg';
+                   music_btn.src='music.gif';
            }
  
        else{
            myVideo.pause();
-                   music_btn.src='music.png'; 
+                   music_btn.src='music_close.png'; 
        }
          }
          

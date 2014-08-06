@@ -98,6 +98,18 @@ function Swipe(container, options) {
       move(index, width * direction, slideSpeed || speed);
       move(to, 0, slideSpeed || speed);
 
+ if(index != 0){
+		var img0=document.getElementById('img0');
+		$(img0).animate({opacity:'1'},"slow");
+	  }else{
+
+	    var img0=document.getElementById('img'+index);
+		$(img0).animate({opacity:'1'},"slow");
+
+	  
+	  }
+
+
     } else {
 
       animate(index * -width, to * -width, slideSpeed || speed);
@@ -313,24 +325,128 @@ function Swipe(container, options) {
         if (isValidSlide && !isPastBounds) {
 
           if (direction) {
-			  var yimg=document.getElementById('img'+index);
+
+            //上一个slide
+            var prev_img=document.getElementById('img'+index);
+            var ytype=prev_img.title;
+
+            if(ytype == 1){
+
+              if(prev_img.style.top){
+
+                var top=(parseInt(prev_img.style.top) - 10) + 'px';
+                $(prev_img).animate({top:top,opacity:'0'},"slow");
+
+              }else{
+
+                var bottom=(parseInt(prev_img.style.bottom) + 10) + 'px';
+                $(prev_img).animate({bottom:bottom,opacity:'0'},"slow");
+
+              }
+            }else if(ytype == 2){
+
+              if(prev_img.style.top){
+
+                var top=(parseInt(prev_img.style.top) + 10) + 'px';
+                $(prev_img).animate({top:top,opacity:'0'},"slow");
+
+              }else{
+
+                var bottom=(parseInt(prev_img.style.bottom) - 10) + 'px';
+                $(prev_img).animate({bottom:bottom,opacity:'0'},"slow");
+
+              }
+
+            }else if(ytype == 3){
+
+              if(prev_img.style.left){
+
+                var left=(parseInt(prev_img.style.left) - 10) + 'px';
+                $(prev_img).animate({left:left,opacity:'0'},"slow");
+
+              }else{
+
+                var right=(parseInt(prev_img.style.right) + 10) + 'px';
+                $(prev_img).animate({right:right,opacity:'0'},"slow");
+
+              }
+
+            }else if(ytype == 4){
+
+              if(prev_img.style.left){
+
+                var left=(parseInt(prev_img.style.left) + 10) + 'px';
+                $(prev_img).animate({left:left,opacity:'0'},"slow");
+
+              }else{
+
+                var right=(parseInt(prev_img.style.right) - 10) + 'px';
+                $(prev_img).animate({right:right,opacity:'0'},"slow");
+
+              }
+
+            }
 			
-			if('img'+index == 'img2'){
-				$(yimg).animate({left:'15px',opacity:'0'},"slow");
-			  }else if('img'+index == 'img3'){
-				$(yimg).animate({right:'15px',opacity:'0'},"slow");
-			  }else{
-				$(yimg).animate({top:'60px',opacity:'0'},"slow");
-			  }
-			
-			  var nimg=document.getElementById('img'+(index+1));
-			  if('img'+(index+1) == 'img2'){
-				$(nimg).animate({left:'25px',opacity:'1'},"slow");
-			  }else if('img'+(index+1) == 'img3'){
-				$(nimg).animate({right:'25px',opacity:'1'},"slow");
-			  }else{
-				$(nimg).animate({top:'80px',opacity:'1'},"slow");
-			  }
+			 //下一个slide 
+			  var next_img=document.getElementById('img'+(index+1));
+        var ntype=next_img.title;
+        if(ntype == 1){
+
+          if(next_img.style.top){
+
+            var top=(parseInt(next_img.style.top) + 10) + 'px';
+            $(next_img).animate({top:top,opacity:'1'},"slow");
+
+          }else{
+
+            var bottom=(parseInt(next_img.style.bottom) - 10) + 'px';
+            $(next_img).animate({bottom:bottom,opacity:'1'},"slow");
+
+          }
+        }else if(ntype == 2){
+
+          if(next_img.style.top){
+
+            var top=(parseInt(next_img.style.top) - 10) + 'px';
+            $(next_img).animate({top:top,opacity:'1'},"slow");
+
+          }else{
+
+            var bottom=(parseInt(next_img.style.bottom) + 10) + 'px';
+            $(next_img).animate({bottom:bottom,opacity:'1'},"slow");
+
+          }
+
+        }else if(ntype == 3){
+
+          if(next_img.style.left){
+
+            var left=(parseInt(next_img.style.left) + 10) + 'px';
+            $(next_img).animate({left:left,opacity:'1'},"slow");
+
+          }else{
+
+            var right=(parseInt(next_img.style.right) - 10) + 'px';                      
+            $(next_img).animate({right:right,opacity:'1'},"slow");
+
+          }
+
+        }else if(ntype == 4){
+
+          if(next_img.style.left){
+
+            var left=(parseInt(next_img.style.left) - 10) + 'px';
+            $(next_img).animate({left:left,opacity:'1'},"slow");
+
+          }else{
+
+            var right=(parseInt(next_img.style.right) + 10) + 'px';
+            $(next_img).animate({right:right,opacity:'1'},"slow");
+
+          }
+
+        }
+
 
             move(index-1, -width, 0);
             move(index, slidePos[index]-width, speed);
@@ -339,23 +455,127 @@ function Swipe(container, options) {
 
           } else {
 
-			  var yimg=document.getElementById('img'+index);
-			
-			if('img'+index == 'img2'){
-				$(yimg).animate({left:'15px',opacity:'0'},"slow");
-			  }else if('img'+index == 'img3'){
-				$(yimg).animate({right:'15px',opacity:'0'},"slow");
-			  }else{
-				$(yimg).animate({top:'60px',opacity:'0'},"slow");
-			  }
-			  var nimg=document.getElementById('img'+(index-1));
-			  if('img'+(index-1) == 'img2'){
-				$(nimg).animate({left:'25px',opacity:'1'},"slow");
-			  }else if('img'+(index-1) == 'img3'){
-				$(nimg).animate({right:'25px',opacity:'1'},"slow");
-			  }else{
-				$(nimg).animate({top:'80px',opacity:'1'},"slow");
-			  }
+			  //上一个slide
+            var prev_img=document.getElementById('img'+index);
+            var ytype=prev_img.title;
+
+            if(ytype == 1){
+
+              if(prev_img.style.top){
+
+                var top=(parseInt(prev_img.style.top) - 10) + 'px';
+                $(prev_img).animate({top:top,opacity:'0'},"slow");
+
+              }else{
+
+                var bottom=(parseInt(prev_img.style.bottom) + 10) + 'px';
+                $(prev_img).animate({bottom:bottom,opacity:'0'},"slow");
+
+              }
+            }else if(ytype == 2){
+
+              if(prev_img.style.top){
+
+                var top=(parseInt(prev_img.style.top) + 10) + 'px';
+                $(prev_img).animate({top:top,opacity:'0'},"slow");
+
+              }else{
+
+                var bottom=(parseInt(prev_img.style.bottom) - 10) + 'px';
+                $(prev_img).animate({bottom:bottom,opacity:'0'},"slow");
+
+              }
+
+            }else if(ytype == 3){
+
+              if(prev_img.style.left){
+
+                var left=(parseInt(prev_img.style.left) - 10) + 'px';
+                $(prev_img).animate({left:left,opacity:'0'},"slow");
+
+              }else{
+
+                var right=(parseInt(prev_img.style.right) + 10) + 'px';
+                $(prev_img).animate({right:right,opacity:'0'},"slow");
+
+              }
+
+            }else if(ytype == 4){
+
+              if(prev_img.style.left){
+
+                var left=(parseInt(prev_img.style.left) + 10) + 'px';
+                $(prev_img).animate({left:left,opacity:'0'},"slow");
+
+              }else{
+
+                var right=(parseInt(prev_img.style.right) - 10) + 'px';
+                $(prev_img).animate({right:right,opacity:'0'},"slow");
+
+              }
+
+            }
+      
+       //下一个slide 
+        var next_img=document.getElementById('img'+(index-1));
+        var ntype=next_img.title;
+        if(ntype == 1){
+
+          if(next_img.style.top){
+
+            var top=(parseInt(next_img.style.top) + 10) + 'px';
+            $(next_img).animate({top:top,opacity:'1'},"slow");
+
+          }else{
+
+            var bottom=(parseInt(next_img.style.bottom) - 10) + 'px';
+            $(next_img).animate({bottom:bottom,opacity:'1'},"slow");
+
+          }
+        }else if(ntype == 2){
+
+          if(next_img.style.top){
+
+            var top=(parseInt(next_img.style.top) - 10) + 'px';
+            $(next_img).animate({top:top,opacity:'1'},"slow");
+
+          }else{
+
+            var bottom=(parseInt(next_img.style.bottom) + 10) + 'px';
+            $(next_img).animate({bottom:bottom,opacity:'1'},"slow");
+
+          }
+
+        }else if(ntype == 3){
+
+          if(next_img.style.left){
+
+            var left=(parseInt(next_img.style.left) + 10) + 'px';
+            $(next_img).animate({left:left,opacity:'1'},"slow");
+
+          }else{
+
+            var right=(parseInt(next_img.style.right) - 10) + 'px';                      
+            $(next_img).animate({right:right,opacity:'1'},"slow");
+
+          }
+
+        }else if(ntype == 4){
+
+          if(next_img.style.left){
+
+            var left=(parseInt(next_img.style.left) - 10) + 'px';
+            $(next_img).animate({left:left,opacity:'1'},"slow");
+
+          }else{
+
+            var right=(parseInt(next_img.style.right) + 10) + 'px';
+            $(next_img).animate({right:right,opacity:'1'},"slow");
+
+          }
+
+        }
+
 
             move(index+1, width, 0);
             move(index, slidePos[index]+width, speed);
@@ -368,9 +588,17 @@ function Swipe(container, options) {
 
         } else {
 
-          move(index-1, -width, speed);
-          move(index, 0, speed);
-          move(index+1, width, speed);
+           if(direction){
+
+			if (options.continuous) slide(0);
+
+		  }
+		  else {
+
+			if (options.continuous) slide(slides.length-1);
+
+		  }
+
 
         }
 
